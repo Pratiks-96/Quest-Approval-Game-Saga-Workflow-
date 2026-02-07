@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/<YOUR_GITHUB_USERNAME>/Quest-Approval-Game-Saga-Workflow'
+    repoURL: 'https://github.com/Pratiks-96/Quest-Approval-Game-Saga-Workflow-.git'
     targetRevision: main
-    path: helm
+    path: helm/quest-game
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: quest-game
+    namespace: default
   syncPolicy:
     automated:
       prune: true        # Automatically delete resources not in git
