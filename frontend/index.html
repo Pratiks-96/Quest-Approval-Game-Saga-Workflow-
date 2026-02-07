@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quest Approval Game</title>
+  <style>
+    body {
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: monospace;
+      text-align: center;
+      padding: 40px;
+    }
+    button {
+      padding: 12px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .log {
+      margin-top: 20px;
+      background: #020617;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🎮 Quest Approval Game</h1>
+<p>Start quests. Manager decides your fate.</p>
+
+<button onclick="startQuest()">🗡️ Start Quest</button>
+<button onclick="approve()">✅ Approve</button>
+<button onclick="reject()">❌ Reject</button>
+
+<div class="log" id="log"></div>
+
+<script>
+let questId = null;
+const API = "http://localhost:8080";
+
+function log(msg) {
+  document.getElementById("log").innerHTML += `<p>${msg}</p>`;
+}
+
+function startQuest() {
+  fetch(`${API}/workflow/leave`, { method: "POST" })
+    .then(r => r.json())
+    .then(d => {
+      questId = d.id;
+      log(`🗡️ Quest ${questId} started (PENDING)`);
+    });
+}
+
+function approve() {
+  fetch(`${API}/workflow/leave/${questId}/approve`, { method: "POST" })
+    .then(() => log(`🎉 Quest ${questId} APPROVED!`));
+}
+
+function reject() {
+  fetch(`${API}/workflow/leave/${questId}/reject`, { method: "POST" })
+    .then(() => log(`💀 Quest ${questId} REJECTED`));
+}
+</script>
+
+</body>
+</html>
