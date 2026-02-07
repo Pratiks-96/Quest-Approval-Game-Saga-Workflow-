@@ -18,5 +18,5 @@ jobs:
     - run: |
         docker build -t pratik6958/leave-service ./leave-service
         docker push pratik6958/leave-service
-        docker build -f Dockerfile.approval-service -t pratik6958/leave-service ./leave-service
+        docker build -f Dockerfile.approval-service -t pratik6958/approval-service ./leave-service
         docker push pratik6958/approval-service
