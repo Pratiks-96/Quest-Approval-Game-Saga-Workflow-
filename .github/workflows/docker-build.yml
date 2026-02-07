@@ -18,7 +18,10 @@ jobs:
     - run: |
         docker build -t pratik6958/leave-service ./leave-service
         docker push pratik6958/leave-service
-        echo "started build 2nd notificatin service"
-        print "started build 2nd notificatin service"
+        echo "started build 2nd notification service"
+
         docker build -t pratik6958/notification-service ./notification-service
         docker push pratik6958/notification-service
+        echo "started build 3rd workflow-service"
+        docker build -t pratik6958/workflow-service ./workflow-service
+        docker push pratik6958/workflow-service
