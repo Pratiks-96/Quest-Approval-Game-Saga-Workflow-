@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: leave
-        image: yourdockerhub/leave-service:latest
+        image: pratik6958/leave-service:latest
         ports:
         - containerPort: 8080
 ---
