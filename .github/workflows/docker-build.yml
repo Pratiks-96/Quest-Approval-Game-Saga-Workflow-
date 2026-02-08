@@ -16,7 +16,10 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - run: |
+    
         docker build -t pratik6958/leave-service ./leave-service
+        docker build -t pratik6958/leave-service ./frontend
+        docker push pratik6958/frontend-service 
         docker push pratik6958/leave-service
         echo "started build 2nd notification service"
 
